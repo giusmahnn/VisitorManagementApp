@@ -1,5 +1,5 @@
 import { Moon, Palette, Sun } from "lucide-react";
-import { useThemeStore, type Mode, type Theme } from "@/store/theme.store";
+import { useThemeStore, type Theme } from "@/store/theme.store";
 
 const themes: { value: Theme; label: string; color: string }[] = [
     { value: "slate", label: "Slate", color: "bg-slate-900" },

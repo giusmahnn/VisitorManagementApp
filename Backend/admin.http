@@ -1,15 +1,16 @@
 @baseUrl = http://localhost:3000/api/v1
+@baseUrl1 = https://visitormanagementapp.onrender.com
 
 ### Create the first admin account.
 ### Set BOOTSTRAP_ADMIN_SECRET in Backend/.env to the same value as @bootstrapSecret.
 ### This request works only while no admin account exists.
-POST {{baseUrl}}/auth/bootstrap-admin
+POST {{baseUrl1}}/auth/bootstrap-admin
 Content-Type: application/json
 
 {
-  "name": "System Administrator",
-  "email": "admin@example.com",
-  "password": "ChangeThisAdminPassword123!"
+  "name": "System Administrator Account",
+  "email": "admin@visitormanagementapp.com",
+  "password": "AdminPassword123!"
 }
 
 ### Login with the created admin account.

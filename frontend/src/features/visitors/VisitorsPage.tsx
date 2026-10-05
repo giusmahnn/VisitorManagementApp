@@ -31,7 +31,7 @@ const initialValues: BookingFormValues = {
     mobileNo: "",
     email: "",
     address: "",
-    whomToMeet: "",
+    // whomToMeet: "",
     purpose: "",
     dateOfVisit: "",
     visitStartTime: "",
