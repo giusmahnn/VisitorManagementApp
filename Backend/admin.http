@@ -9,8 +9,8 @@ Content-Type: application/json
 
 {
   "name": "System Administrator Account",
-  "email": "admin@visitormanagementapp.com",
-  "password": "AdminPassword123!"
+  "email": "admin@example.com",
+  "password": "ChangeThisAdminPassword123!"
 }
 
 ### Login with the created admin account.
