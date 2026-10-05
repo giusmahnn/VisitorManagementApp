@@ -1,0 +1,22 @@
+@baseUrl = http://localhost:3000/api/v1
+
+### Create the first admin account.
+### Set BOOTSTRAP_ADMIN_SECRET in Backend/.env to the same value as @bootstrapSecret.
+### This request works only while no admin account exists.
+POST {{baseUrl}}/auth/bootstrap-admin
+Content-Type: application/json
+
+{
+  "name": "System Administrator",
+  "email": "admin@example.com",
+  "password": "ChangeThisAdminPassword123!"
+}
+
+### Login with the created admin account.
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "ChangeThisAdminPassword123!"
+}
