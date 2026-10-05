@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowRight, CalendarCheck, LoaderCircle, LockKeyhole, Mail } from "lucide-react";
+import { ArrowRight, CalendarCheck, Eye, EyeOff, LoaderCircle, LockKeyhole, Mail } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -29,6 +29,7 @@ export default function LoginPage() {
     const setAuth = useAuthStore((state) => state.setAuth);
     const [requestError, setRequestError] = useState<string | null>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const form = useForm<LoginValues>({ resolver: zodResolver(loginSchema) });
     const errors = form.formState.errors;
 
@@ -72,7 +73,7 @@ export default function LoginPage() {
                     {requestError && <Alert className="mt-6" variant="destructive"><AlertTitle>Sign in failed</AlertTitle><AlertDescription>{requestError}</AlertDescription></Alert>}
                     <div className="mt-7 grid gap-5">
                         <label className="grid gap-2 text-sm font-medium" htmlFor="email">Email address<div className="relative"><Mail className="pointer-events-none absolute left-3 top-3 size-4 text-muted-foreground" /><input id="email" type="email" autoComplete="email" className="h-11 w-full rounded-lg border border-input bg-background pl-10 pr-3 text-sm outline-none focus:border-ring focus:ring-3 focus:ring-ring/20" {...form.register("email")} /></div>{errors.email && <span className="text-xs font-normal text-destructive">{errors.email.message}</span>}</label>
-                        <label className="grid gap-2 text-sm font-medium" htmlFor="password">Password<div className="relative"><LockKeyhole className="pointer-events-none absolute left-3 top-3 size-4 text-muted-foreground" /><input id="password" type="password" autoComplete="current-password" className="h-11 w-full rounded-lg border border-input bg-background pl-10 pr-3 text-sm outline-none focus:border-ring focus:ring-3 focus:ring-ring/20" {...form.register("password")} /></div>{errors.password && <span className="text-xs font-normal text-destructive">{errors.password.message}</span>}</label>
+                        <label className="grid gap-2 text-sm font-medium" htmlFor="password">Password<div className="relative"><LockKeyhole className="pointer-events-none absolute left-3 top-3 size-4 text-muted-foreground" /><input id="password" type={showPassword ? "text" : "password"} autoComplete="current-password" className="h-11 w-full rounded-lg border border-input bg-background pl-10 pr-11 text-sm outline-none focus:border-ring focus:ring-3 focus:ring-ring/20" {...form.register("password")} /><button className="absolute right-2 top-2 inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" type="button" aria-label={showPassword ? "Hide password" : "Show password"} aria-pressed={showPassword} onClick={() => setShowPassword((visible) => !visible)}>{showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}</button></div>{errors.password && <span className="text-xs font-normal text-destructive">{errors.password.message}</span>}</label>
                     </div>
                     <Button className="mt-8 h-11 w-full" type="submit" disabled={isSubmitting}>{isSubmitting ? <LoaderCircle className="animate-spin" /> : <ArrowRight />} {isSubmitting ? "Signing in..." : "Sign in"}</Button>
                     {/* Host accounts are created internally by administrators. */}
