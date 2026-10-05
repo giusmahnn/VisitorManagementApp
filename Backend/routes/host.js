@@ -6,7 +6,7 @@ const {
   getHostNotifications,
   createHostAppointment,
   processHostDecision,
-} = require("../controllers/Visitors");
+} = require("../controllers/visitors");
 
 const protect = require("../middlewares/authMiddleware");
 

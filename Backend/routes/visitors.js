@@ -20,7 +20,7 @@ const {
   manualCheckIn,
   manualCheckOut,
   createReceptionistBooking,
-} = require("../controllers/Visitors");
+} = require("../controllers/visitors");
 const protect = require("../middlewares/authMiddleware");
 const authorize = require("../middlewares/roleMiddleware");
 
