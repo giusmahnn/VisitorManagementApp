@@ -61,8 +61,8 @@ app.use((error, req, res, next) => {
 
 const startserver = async () => {
   await connectDB();
-  app.listen(PORT, () => {
-    console.log(`App Listening on Port ${PORT}`);
+  app.listen(process.env.PORT || 3000, "0.0.0.0", () => {
+    console.log(`Server running on port ${process.env.PORT || 3000}`);
   });
 };
 
